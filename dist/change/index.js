@@ -70,15 +70,7 @@ const handleSmallToBig = (money)=>{
      }
      return chineseStr;
 }
-// 电话号码验证
-const handleMPhone = (value) => {
-    const reg = new RegExp(/^(1[3-9])\d{9}$/);
-    if (reg.test(value)) {
-      return true;
-    } else {
-      return false;
-    }
-};
+
 // 将url参数转换为对象
 const handleStrFormat = (url) => {
     if (typeof url === "string") url = url.split("?")[1] || "";
@@ -92,7 +84,6 @@ const handleStrFormat = (url) => {
     return r;
 };
 module.exports  = {
-    handleMPhone, //电话号码验证
     handleStrFormat, //将url参数转换为对象
     handleSmallToBig,//将数字金额转换为大写金额
 }
