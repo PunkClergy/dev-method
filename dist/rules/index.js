@@ -9,10 +9,7 @@ const handleMPhone = (value) => {
       return false;
     }
 };  
-const hand =()=>{} 
 
 module.exports  = {
     handleMPhone, //电话号码验证
-
-
 }
