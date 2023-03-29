@@ -10,7 +10,7 @@ const handleMPhone = (value) => {
     } else {
       return false;
     }
-};
+};  
 
 module.exports  = {
     handleMPhone, //手机号正则验证
