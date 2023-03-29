@@ -1,6 +1,6 @@
 {
   "name": "dev-method",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "JavaScript-method",
   "main": "./dist",
   "scripts": {
