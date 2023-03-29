@@ -8,8 +8,9 @@ const handleMPhone = (value) => {
     } else {
       return false;
     }
-};  
+};   
 
 module.exports  = {
     handleMPhone, //电话号码验证
+    
 }
