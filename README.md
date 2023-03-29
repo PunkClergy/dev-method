@@ -26,7 +26,7 @@ sort:{
 	handleShallowClone(object),//浅拷贝
 	handleDeepClone(object),//深拷贝
 	handleDebounce(fn,wait),//防抖函数
-    handleThrottle(fn,wait),//节流函数
+	handleThrottle(fn,wait),//节流函数
 }
 change:{
 	handleSmallToBig(2123.987),//将数字金额转换为大写金额
