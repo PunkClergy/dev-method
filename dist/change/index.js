@@ -1,4 +1,6 @@
-// 将数字金额转换为大写金额
+// 数字金额转换
+// 用法:handleSmallToBig(value)
+// 解释:将数字金额转换为大写金额
 const handleSmallToBig = (money)=>{
      // 初始化的时候会出现undefined
      if (!money) return
@@ -71,7 +73,9 @@ const handleSmallToBig = (money)=>{
      return chineseStr;
 }
 
-// 将url参数转换为对象
+// URL转换对象
+// 用法:handleStrFormat(url)
+// 解释:将url参数转换为对象
 const handleStrFormat = (url) => {
     if (typeof url === "string") url = url.split("?")[1] || "";
     if (typeof url === "string") url = url.split(/[&=]/);
@@ -83,6 +87,7 @@ const handleStrFormat = (url) => {
     }
     return r;
 };
+
 module.exports  = {
     handleStrFormat, //将url参数转换为对象
     handleSmallToBig,//将数字金额转换为大写金额
