@@ -28,8 +28,10 @@ sort:{
 }
 change:{
 	handleSmallToBig(2123.987),//将数字金额转换为大写金额
-	handleMPhone(13123213234), //电话号码验证
 	handleStrFormat(url), //将url参数转换为对象
+}
+rules:{
+	handleMPhone(13123213234), //电话号码验证
 }
 ```
 
