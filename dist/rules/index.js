@@ -6,12 +6,13 @@ const handleMPhone = (value) => {
     if (reg.test(value)) {
       return true;
     } else {
+        
       return false;
     }
 };   
 
 module.exports  = {
     handleMPhone, //电话号码验证
-    
+
 
 }
