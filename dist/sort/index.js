@@ -74,9 +74,42 @@ const handleDeepClone = (obj) => {
     return cloneObj;
 }
 
+// 防抖函数
+// 原理:利用定时器，函数第一次执行时设定一个定时器，之后调用时发现已经设定过定时器就清空之前的定时器，并重新设定一个新的定时器，如果存在没有被清空的定时器，当定时器计时结束后触发函数执行。
+// 用法:handleDebounce(fn,wait) fn需要执行的函数 wait时间间隔
+// 场景:例 input输入改变调用接口检测是否重名
+// 解释:防抖函数指某个函数在某段时间内，无论触发了多少次回调，都只执行最后一次
+const handleDebounce = (fn, wait = 50) => {
+    let timer = null
+    return function(...args) {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+            fn.apply(this, args)
+        }, wait)
+    }
+}
+
+// 节流函数
+// 原理:用时间戳来判断是否已到执行时间，记录上次执行的时间戳，然后每次触发事件执行回调，回调中判断当前时间戳距离上次执行时间戳的间隔是否已经达到时间差（Xms） ，如果是则执行，并更新上次执行的时间戳，如此循环。
+// 用法:handleThrottle(fn,wait) fn需要执行的函数 wait时间间隔
+// 场景:例 mousemove 事件
+// 解释:指的是某个函数在一定时间间隔内（例如 3 秒）只执行一次，在这 3 秒内 无视后来产生的函数调用请求，也不会延长时间间隔
+const handleThrottle = (fn, wait = 50) => {
+    let previous = 0
+    return function(...args) {
+      let now = +new Date()
+      if (now - previous > wait) {
+        previous = now
+        fn.apply(this, args)
+      }
+    }
+}
+
 module.exports  = {
     handleMultipleMusterSort,//sort排序&数组升序排列
     handleRemoveRepeat,//删除排序数组中的重复项
     handleShallowClone,//浅拷贝
     handleDeepClone,//深拷贝
+    handleDebounce,//防抖函数
+    handleThrottle,//节流函数
 }
