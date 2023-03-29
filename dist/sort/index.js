@@ -42,8 +42,40 @@ const handleRemoveRepeat =  (params)=> {
     return newArray
 };
 
+// 浅拷贝
+// 用法:handleShallowClone(object)
+// 解释:重新在堆中创建内存，拷贝前后对象的"基本数据"类型互不影响，但拷贝前后对象的"引用类型"因共享同一块内存，会相互影响。
+const handleShallowClone = (source) =>{
+    let target = {};
+    for(let i in source) {
+        if (source.hasOwnProperty(i)) {
+            target[i] = source[i];
+        }
+    }
+    return target;
+}
+// 深拷贝
+// 原理:遍历对象、数组直到里边都是基本数据类型，然后再去复制，就是深度拷贝
+// 用法:handleDeepClone(object)-
+// 解释:从堆内存中开辟一个新的区域存放新对象，对对象中的子对象进行递归拷贝,拷贝前后的两个对象互不影响。
+const handleDeepClone = (obj) => {
+    if (obj === null) return obj; 
+    if (obj instanceof Date) return new Date(obj);
+    if (obj instanceof RegExp) return new RegExp(obj);
+    if (typeof obj !== "object") return obj;
+    let cloneObj = new obj.constructor();
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        // 实现一个递归拷贝
+        cloneObj[key] = deepClone(obj[key]);
+      }
+    }
+    return cloneObj;
+}
 
 module.exports  = {
     handleMultipleMusterSort,//sort排序&数组升序排列
     handleRemoveRepeat,//删除排序数组中的重复项
+    handleShallowClone,//浅拷贝
+    handleDeepClone,//深拷贝
 }

@@ -23,6 +23,8 @@ amounts:{
 sort:{
 	handleMultipleMusterSort([...],[...],...),//sort数组排序
 	handleRemoveRepeat([...]),//删除排序数组中的重复项
+	handleShallowClone(object),//浅拷贝
+	handleDeepClone(object),//深拷贝
 }
 change:{
 	handleSmallToBig(2123.987),//将数字金额转换为大写金额
