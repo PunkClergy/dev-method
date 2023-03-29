@@ -1,0 +1,14 @@
+{
+  "name": "dev-method",
+  "version": "1.0.0",
+  "description": "JavaScript-method",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JavaScript\u001b[C"
+  ],
+  "author": "markov",
+  "license": "ISC"
+}
