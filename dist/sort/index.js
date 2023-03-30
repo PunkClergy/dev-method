@@ -110,7 +110,7 @@ const handleThrottle = (fn, wait = 50) => {
 // 用法:handleEnhancedThrottle(fn,wait) fn需要执行的函数 wait时间间隔
 // 解释:wait 时间内，可以重新生成定时器，但只要 wait 的时间到了，必须给用户一个响应
 
-const handleEnhancedThrottle = (fn,wait) =>{
+const handleEnhancedThrottle = (fn, wait = 50) =>{
     let previous = 0, 
         timer = null
     return function (...args) {
