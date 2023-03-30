@@ -131,10 +131,52 @@ const handleLocalStorage = {
             localStorage.clear()
         }
     }
-  }
+}
+
+// 日期(yyyy-MM-dd)和时间戳(10位-秒)转换
+// 用法:handleStamp.getTime(date)/timeToStr(time, fmt)
+// 解释:date-日期,time-时间戳,fmt-日期格式(yyyy-MM-dd)
+const handleStamp = { 
+    getTime: (date) => { 
+        let date = date ? new Date(date) : new Date()
+        return Math.round(date.getTime() / 1000)
+    },
+    timeToStr: (time, fmt)=> {
+        return new Date(time * 1000).pattern(fmt || 'yyyy-MM-dd')
+    }
+}
+
+// Cookie 操作(设置/获取/删除)
+// 用法:handleCookie.set(name,value,day)/get(name)/del(name)
+// 解释:set-设置,get-获取,del-删除 (name:名称,value:值,day:有效期限)
+const handleCookie = {
+    // 设置
+    set: (name, value, day) => {
+        let oDate = new Date()
+            oDate.setDate(oDate.getDate() + (day || 30))
+            document.cookie = name + '=' + value + ';expires=' + oDate + "; path=/;"
+    },
+    // 获取
+    get: (name) => {
+        let str = document.cookie
+        let arr = str.split('; ')
+        for (let i = 0; i < arr.length; i++) {
+            let newArr = arr[i].split('=')
+            if (newArr[0] === name) {
+              return newArr[1]
+            }
+        }
+    },
+    // 删除
+    del: (name) => {
+        this.set(name, '', -1)
+    }
+}
 
 module.exports  = {
     handleStrFormat, //将url参数转换为对象
     handleSmallToBig,//将数字金额转换为大写金额
     handleLocalStorage,//（设置/获取/清空）本地存储localStorage
+    handleStamp,//日期(yyyy-MM-dd)和时间戳(10位-秒)转换
+    handleCookie,//Cookie 操作(设置/获取/删除)
 }

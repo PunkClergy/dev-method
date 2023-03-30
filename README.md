@@ -37,6 +37,8 @@ change:{
 	handleSmallToBig(2123.987),//将数字金额转换为大写金额
 	handleStrFormat(url), //将url参数转换为对象
 	handleLocalStorage.set(name,value,day),//本地存储localStorage(设置set(name,value,day)/获取get(name)/清空clear(name))
+	handleStamp.getTime(date),//日期(yyyy-MM-dd)和时间戳(10位-秒)转换(日期转时间戳getTime(date)；时间戳转日期timeToStr(time,fmt))
+	handleCookie.set(name,value,day),//Cookie 操作(设置set(name,value,day)/获取get(name)/删除del(name))
 }
 rules:{
 	handleMPhone(13123213234), //电话号码验证
