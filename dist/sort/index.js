@@ -79,6 +79,21 @@ const handleDeepClone = (obj) => {
 // 用法:handleDebounce(fn,wait) fn需要执行的函数 wait时间间隔
 // 场景:例 input输入改变调用接口检测是否重名
 // 解释:防抖函数指某个函数在某段时间内，无论触发了多少次回调，都只执行最后一次
+            // 问: 此处为什么要用apply重定向this？
+            // 例：
+                // const sayHi= () => {
+                //     console.log(this);  
+                            // fn(args) 上述this指向为windows
+                            // fn.apply(this, args) 上述this指向为当前元素
+                // }
+                // let inp = document.getElementById('inp');
+                // inp.addEventListener('input', handleDebounce(sayHi)); 
+            // 答：
+                // Input加载后执行debounce  return出一个函数
+                // 监听input变化 然后执行此函数 
+                // addEventListener指向为当前元素  所以return出的函数指向为当前input元素
+                    // 文档描述：当函数被用作事件处理函数时，它的 this 指向触发事件的元素(this)
+                // 而fn()的this指向根据"函数直接调用"则this指向windows
 const handleDebounce = (fn, wait = 50) => {
     let timer = null
     return function(...args) {
@@ -109,7 +124,6 @@ const handleThrottle = (fn, wait = 50) => {
 // 场景:如果用户的操作非常频繁，不等设置的延迟时间结束就进行下次操作，会频繁的清除计时器并重新生成，所以函数 fn 一直都没办法执行，导致用户操作迟迟得不到响应。
 // 用法:handleEnhancedThrottle(fn,wait) fn需要执行的函数 wait时间间隔
 // 解释:wait 时间内，可以重新生成定时器，但只要 wait 的时间到了，必须给用户一个响应
-
 const handleEnhancedThrottle = (fn, wait = 50) =>{
     let previous = 0, 
         timer = null
