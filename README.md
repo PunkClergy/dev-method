@@ -32,10 +32,11 @@ sort:{
 change:{
 	handleSmallToBig(2123.987),//将数字金额转换为大写金额
 	handleStrFormat(url), //将url参数转换为对象
+	handleLocalStorage.set(name,value,day),//本地存储localStorage(设置set(name,value,day)/获取get(name)/清空clear(name))
 }
 rules:{
 	handleMPhone(13123213234), //电话号码验证
-	handleCheckRegular(value,type)
+	handleCheckRegular(value,type),//常用正则验证
 }
 ```
 

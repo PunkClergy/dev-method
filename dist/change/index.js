@@ -88,7 +88,53 @@ const handleStrFormat = (url) => {
     return r;
 };
 
+// 本地存储localStorage(设置/获取/清空)
+// 用法:handleStore.set(name,value,day)/get(name)/clear(name)
+// 解释: set-设置，get-获取，clear-清空 （name:名词、value:值、day:时间）
+const handleLocalStorage = { 
+    // 设置
+    set: (name, value, day) => { 
+        let d = new Date()
+        let time = 0
+        // 时间默认为1天
+        day = (typeof(day) === 'undefined' || !day) ? 1 : day
+        // 毫秒
+        time = d.setHours(d.getHours() + (24 * day))
+        localStorage.setItem(name, JSON.stringify({
+            data: value,
+            time: time
+        }))
+    },
+    // 获取
+    get: (name) => {
+        let data = localStorage.getItem(name)
+        if (!data) {
+            return null
+        }
+        let obj = JSON.parse(data)
+        // 过期
+        if (new Date().getTime() > obj.time) {
+            localStorage.removeItem(name)
+            return null
+        } else {
+            return obj.data
+        }
+    },
+    // 清空
+    clear: (name) => { 
+        // 清空name
+        if (name) {
+            localStorage.removeItem(name)
+        }
+        // 清空全部 
+        else { 
+            localStorage.clear()
+        }
+    }
+  }
+
 module.exports  = {
     handleStrFormat, //将url参数转换为对象
     handleSmallToBig,//将数字金额转换为大写金额
+    handleLocalStorage,//（设置/获取/清空）本地存储localStorage
 }

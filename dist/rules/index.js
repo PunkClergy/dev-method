@@ -12,7 +12,7 @@ const handleMPhone = (value) => {
 };  
 
 // 常用正则验证
-// handleCheckRegular(value,type) type:phone/tel 注意大小写
+// 用法:handleCheckRegular(value,type) type:phone/tel 注意大小写
 // 解释:return 查找式验证
 const handleCheckRegular = (value,type) => {
     switch (type) {
@@ -55,6 +55,7 @@ const handleCheckRegular = (value,type) => {
         return true
     }
 }
+
 module.exports  = {
     handleMPhone, //手机号正则验证
     handleCheckRegular,//常用正则验证
