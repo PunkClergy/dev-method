@@ -45,7 +45,7 @@ const dispatchPrecisionMul = (arg1, arg2) =>{
     }
     return Number(flag_1.replace(".", "")) * Number(flag_2.replace(".", "")) / Math.pow(10, flag);
 }
-//除法
+// 除法
 const dispatchPrecisionDiv = (arg1, arg2)=>{
     let flag = 0, flag_t = 0, flag_1, flag_2;
     try {

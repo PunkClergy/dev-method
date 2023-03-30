@@ -105,6 +105,29 @@ const handleThrottle = (fn, wait = 50) => {
     }
 }
 
+// 加强版节流函数
+// 场景:如果用户的操作非常频繁，不等设置的延迟时间结束就进行下次操作，会频繁的清除计时器并重新生成，所以函数 fn 一直都没办法执行，导致用户操作迟迟得不到响应。
+// 用法:handleEnhancedThrottle(fn,wait) fn需要执行的函数 wait时间间隔
+// 解释:wait 时间内，可以重新生成定时器，但只要 wait 的时间到了，必须给用户一个响应
+
+const handleEnhancedThrottle = (fn,wait) =>{
+    let previous = 0, 
+        timer = null
+    return function (...args) {
+        let now = +new Date()
+        if (now - previous < wait) {
+            if (timer) clearTimeout(timer)
+                timer = setTimeout(() => {
+                previous = now
+        	    fn.apply(this, args)
+                }, wait)
+        } else {
+            previous = now
+            fn.apply(this, args)
+        }
+    }
+} 
+
 module.exports  = {
     handleMultipleMusterSort,//sort排序&数组升序排列
     handleRemoveRepeat,//删除排序数组中的重复项
@@ -112,4 +135,5 @@ module.exports  = {
     handleDeepClone,//深拷贝
     handleDebounce,//防抖函数
     handleThrottle,//节流函数
+    handleEnhancedThrottle,//加强版防抖
 }
