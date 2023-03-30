@@ -35,6 +35,7 @@ change:{
 }
 rules:{
 	handleMPhone(13123213234), //电话号码验证
+	handleCheckRegular(value,type)
 }
 ```
 
