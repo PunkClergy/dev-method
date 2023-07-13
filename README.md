@@ -7,7 +7,7 @@
 **使用方法：**
 
 ```bash
-npm i markov-method
+npm i dev-method
 ```
 
 ```javascript
@@ -23,6 +23,8 @@ amounts.handleNumFormat(87467463)
 amounts:{
 	handleNumFormat(87467463),//金额千位符处理
 	handlePrecision(0.1,0.2,'add/sub/mul/div'),//处理计算精度问题
+	handGetScrollOffset(),//获得滚动条的滚动距离
+    handGetViewportOffset(),//获取视口的尺寸
 }
 sort:{
 	handleMultipleMusterSort([...],[...],...),//sort数组排序
