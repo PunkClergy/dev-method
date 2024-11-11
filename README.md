@@ -11,8 +11,8 @@ npm i dev-method
 ```
 
 ```javascript
-const myPlugin = require('markov-method')
-const {amounts,sort} = myPlugin",
+const myPlugin = require('dev-method')
+const {amounts,sort} = myPlugin,
 // 例:千位符处理
 amounts.handleNumFormat(87467463)
 ```
@@ -45,6 +45,11 @@ change:{
 rules:{
 	handleMPhone(13123213234), //电话号码验证
 	handleCheckRegular(value,type),//常用正则验证
+}
+browser:{
+	//https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator
+	handleNetworkInformation(), //浏览器NetworkInformation对象
+	handleNavigatorTopLevelInfo(),//浏览器Navigator所有信息
 }
 ```
 
