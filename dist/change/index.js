@@ -138,7 +138,7 @@ const handleLocalStorage = {
 // 解释:date-日期,time-时间戳,fmt-日期格式(yyyy-MM-dd)
 const handleStamp = { 
     getTime: (date) => { 
-        let date = date ? new Date(date) : new Date()
+        date = date ? new Date(date) : new Date()
         return Math.round(date.getTime() / 1000)
     },
     timeToStr: (time, fmt)=> {
