@@ -21,7 +21,7 @@ amounts.handleNumFormat(87467463)
 
 ```javascript
 amounts:{
-	handleNumFormat(87467463),//金额千位符处理
+    handleNumFormat(87467463),//金额千位符处理
 	handlePrecision(0.1,0.2,'add/sub/mul/div'),//处理计算精度问题
 	handGetScrollOffset(),//获得滚动条的滚动距离
     handGetViewportOffset(),//获取视口的尺寸
@@ -50,6 +50,14 @@ browser:{
 	//https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator
 	handleNetworkInformation(), //浏览器NetworkInformation对象
 	handleNavigatorTopLevelInfo(),//浏览器Navigator所有信息
+}
+sorts:{
+    handleBubbleSort(),//冒泡排序
+    handleQuickSort(),//快速排序
+    handleShellSort(),//希尔排序
+    handleSelectionSort(),//选择排序
+    handleMergeSort(),//归并排序
+    handleInsertionSort(),//插入排序
 }
 ```
 
